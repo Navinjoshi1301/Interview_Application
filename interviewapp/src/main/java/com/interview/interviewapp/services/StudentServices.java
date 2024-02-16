@@ -1,6 +1,7 @@
 package com.interview.interviewapp.services;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,12 +47,18 @@ public class StudentServices {
         return studentRepository.findAll();
     }
     //delete student
-    public Student deleteStudentbyId(int id){
-        Optional<Student>students=studentRepository.findById(id);
-        Student student=students.get();
+   public Student deleteStudentById(int id) {
+    Optional<Student> studentOptional = studentRepository.findById(id);
+    
+    if (studentOptional.isPresent()) {
+        Student student = studentOptional.get();
         studentRepository.deleteById(id);
         return student;
+    } else {
+        throw new NoSuchElementException("Student with ID " + id + " not found");
     }
+}
+
     
     //update student
     public Student updateLevel(Student student,int id){
