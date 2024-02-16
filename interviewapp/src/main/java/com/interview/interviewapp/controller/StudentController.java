@@ -74,7 +74,7 @@ public class StudentController {
     public ResponseEntity<Student> deleteStudent(@PathVariable int Id){
 
         try {
-            services.deleteStudentbyId(Id);
+            services.deleteStudentById(Id);
             return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
         } catch (Exception e) {
             e.printStackTrace();
