@@ -33,10 +33,8 @@ public class StudentController {
         e.printStackTrace();
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
        }
-       
     }
     //add studentss
-    
     @PostMapping("/students")
     public ResponseEntity<List <Student
     >>addStudents(@RequestBody List<Student> students) { 
